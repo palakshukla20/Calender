@@ -8,7 +8,7 @@ var eventData = [ {"date": "2020-10-16", "tittle": "Event", "discription": "Disc
 								 {"date": "2020-11-11", "tittle": "Event4", "discription": "ssss" }]
 
 $(document).ready(function() {
-	allEvent()
+	allEvent();
 	$('.dropdown, .year').on('change', allEvent);
 	$('.previous, .next').on('click', allEvent);
 	
@@ -18,52 +18,61 @@ $(document).ready(function() {
 	});
 
 	$(".btn-add").click(function(){
-		if ($('#text1').val().length != 0 && $('#text1').val().length != 0) {
+		if ($('#text1').val().length != 0 && $('#text2').val().length != 0) {
 			var event = {};
 			event["date"] = 	$('#text1').val();
 			event["tittle"] =  $('#text2').val();
 			event["discription"] =  $('#text3').val();
-			showEvent($('#text1').val())
+			eventData.push(event);
+			showEvent($('#text1').val());
 			$('#text1, #text2, #text3').val("");
-			eventData.push(event)
 		} else {
-			alert ("Please Enter Date and Title")
+			alert("Please Enter Date and Title");
 		}
 	});
 
+	function allEvent() {
+		for (var x in eventData) {
+			var check = eventData[x].date;
+			showEvent(check)
+		}
+	}
+
   function showEvent(temp) {
 		if ($("td").hasClass(temp)) {
-			ele = document.getElementById(temp)
-			$(ele).css('visibility', 'visible')	
+			var ele = document.getElementById(temp);
+			$(ele).css('visibility', 'visible');
+			$(ele).html("  " + totalEvent(temp));
+			$(ele).css('font-weight', "bolder");
 		}
 	}
 
 	$('.body').on('click', 'td', function() { 
-		object = {}
+		var object = {}
 		var result = [];
 		var date = $(this).attr('class');
 		for (var x in eventData) {
-			check = eventData[x].date;
+			var check = eventData[x].date;
 			if (date == check) {
 				var obj = {}
 				obj["date"] = eventData[x].date;
 				obj["tittle"] = eventData[x].tittle;
 				obj["discription"] = eventData[x].discription;
-				result.push(obj)
+				result.push(obj);
 			}
 		}
-		object["result"] = result
-	  text = Mustache.render(template, object);
+		object["result"] = result;
+	  var text = Mustache.render(template, object);
 		$("#event-display").html(text);
 	});
 });
 
-function allEvent() {
-	for (var x in eventData) {
-		check = eventData[x].date
-		if ($("td").hasClass(check)) {
-			ele = document.getElementById(check)
-	    $(ele).css('visibility', 'visible')
-		}	
-	}
+function totalEvent(check) {
+  var counter = 0;
+  for (var obj of eventData) {
+    if (obj.date == check) {
+			counter++;
+		} 
+  }
+  return(counter)
 }
