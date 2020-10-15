@@ -69,6 +69,9 @@ function showCalendar(month, year) {
   for (var i = 0; i < 6; i++) {
     var row = document.createElement("tr");
     for (var j = 0; j < 7; j++) {
+      var icon = document.createElement("i");
+      icon.setAttribute('class', 'event-icon fa fa-check')
+      icon.setAttribute('aria-hidden', 'true')
       var col = document.createElement("td");
       if (i == 0 && j < firstDay) {
         col.setAttribute("id", "disableField");
@@ -78,17 +81,21 @@ function showCalendar(month, year) {
           col.setAttribute("id", "disableField");
           colText = document.createTextNode(disNext);
           disNext +=1;
-      } else {
-          colText = document.createTextNode(date);
+      } 
+      else {
+          colText = document.createTextNode(dateChange(date));
           col.style.fontWeight = "Semi-bold,";
+          col.setAttribute('class', year + "-" + monthChange(month) + "-" + dateChange(date))
+          icon.setAttribute('id', year + "-" +  monthChange(month) + "-" + dateChange(date))
           if (date === today.getDate() && year === today.getFullYear() && month === today.getMonth()) {
             col.classList.add("bg-info");
           } else if (j == 0) {
             col.style.color = "red";
-          } 
+          }
           date++;
-      }
+        }
       col.appendChild(colText);
+      col.appendChild(icon);
       row.appendChild(col);
     }
     tbl.appendChild(row); 
@@ -97,3 +104,23 @@ function showCalendar(month, year) {
     }
   }
 }
+
+function dateChange(date) {
+  var temp = "0" + date;
+  if (temp.length == 2) {
+    return ("0"+date)
+  } else {
+    return (date)
+  }
+}
+function monthChange(month) {
+  var month = parseInt(month)+1
+  var temp = "0" + month;
+  if (temp.length == 2) {
+    return ("0"+ month);
+  } else {
+    return (month);
+  }
+}
+
+
