@@ -1,0 +1,65 @@
+body *{
+  font-family: "Times New Roman", Times, serif;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.head {
+  background:rgb(101 155 222); 
+  color: white;
+  text-align: center;  
+  padding-top: 20px; 
+}
+
+.previous {
+  float: left;
+  outline: none;
+  margin-left: 25px ;
+  text-align: center;
+  width: 85px;
+}
+
+.next {
+  float: right;
+  outline: none;
+  margin-right: 25px ;
+  width: 80px;
+}
+
+.dateshow {
+  text-align: center;
+}
+
+.monthshow {
+  float: left;
+  margin-left: 20px;
+}
+
+.yearshow {
+  float: right;
+  margin-right: 20px;
+}
+
+th:hover {
+  background: #eceaea;
+}
+
+td:hover {
+  background: #eceaea;
+}
+
+.body {
+  margin-bottom: -17px;
+}
+
+#disableField {
+    color: #ada8a8;
+  }
+
+@media screen and (max-width: 768px) {
+  .dropdown{
+    margin-bottom: 10px;
+  }
+}
+

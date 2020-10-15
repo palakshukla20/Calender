@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calendar</title>
+  <meta name= "viewport" content= "width=device-width, initial-scale=1">
+  <link rel= "stylesheet" href= "calender.css">
+  <link rel= "stylesheet" href= "https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity= "sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <script src= "https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src= "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity= "sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+  <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity= "sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class= "container col-sm-12 col-md-8 col-lg-8 mt-5">
+  <div class= "card">
+    <div class= "head">
+      <h1> Calendar</h1><br/>
+      <div>
+        <button class=" btn previous" id="previous" onclick="previous()">Previous</button>  <!-----&laquo;----->
+        <button class="btn next" id="next" onclick="next()">Next </button>                <!-----&raquo;----->
+        <h3 class="dateshow" id="monthAndYear"></h3>
+      </div><br><br>
+      <form class="form-inline justify-content-center">
+        <label class="monthshow mr-2 ml-2" for="month"></label>
+        <select class="dropdown form-control col-sm-8 col-md-4" name="month" id="month" onchange="setDate()">
+          <option value=0>Jan</option>
+          <option value=1>Feb</option>
+          <option value=2>Mar</option>
+          <option value=3>Apr</option>
+          <option value=4>May</option>
+          <option value=5>Jun</option>
+          <option value=6>Jul</option>
+          <option value=7>Aug</option>
+          <option value=8>Sep</option>
+          <option value=9>Oct</option>
+          <option value=10>Nov</option>
+          <option value=11>Dec</option>
+        </select>
+        <label class="yearshow mr-2 ml-2" for="year"></label>
+        <select class="form-control col-sm-8 col-md-4" name="year" id="year" onchange="setDate()">
+        </select>   
+      </form><br><br>
+    </div> <!-----head-->  
+    <div class="body">
+      <table class="table table-bordered table-responsive-sm" id="calendar">
+        <thead>
+          <tr id= "week" style= "text-align: center;">
+
+          </tr>
+        </thead>
+        <tbody id="calendar-body" style= "text-align: center;"> 
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script src="calender.js"></script>
+</body>
+</html>
