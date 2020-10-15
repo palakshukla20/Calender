@@ -14,7 +14,7 @@ $(document).ready(function() {
   
   var template = document.getElementById("template").innerHTML; 
   $("#btn-2").click(function(){
-    $("#myModal").modal()
+    $("#modal").modal()
   });
 
   $(".btn-add").click(function(){
